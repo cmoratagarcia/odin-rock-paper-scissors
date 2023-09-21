@@ -35,7 +35,8 @@ function game() {
     let playerMove = prompt("Enter rock, paper or scissors").toLowerCase();
 
     playRound(playerMove, computerMove);
-    return `You:${playerScore} - Computer:${computerScore}`;
+    //Using console.log to verify for now. Will change to return later
+    console.log(`You:${playerScore} - Computer:${computerScore}`);
   }
 }
 
