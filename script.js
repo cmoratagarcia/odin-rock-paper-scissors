@@ -32,12 +32,17 @@ function playRound(playerSelection, computerSelection) {
 // Write a NEW function called game(). Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
 function game() {
   let computerMove = getComputerChoice();
-  // Use prompt() to get input from the user. Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
-  let playerMove = prompt("Enter rock, paper or scissors").toLowerCase();
+  //Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked.
+  const buttons = document.querySelectorAll("button");
 
-  playRound(playerMove, computerMove);
-  //Using console.log to verify for now. Will change to return later
-  console.log(`You:${playerScore} - Computer:${computerScore}`);
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      let playerMove = e.target.id;
+      playRound(playerMove, computerMove);
+      //Using console.log to verify for now. Will change to return later
+      console.log(`You:${playerScore} - Computer:${computerScore}`);
+    });
+  });
 }
 
 game();
