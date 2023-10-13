@@ -22,8 +22,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-  } else if (
+  if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
@@ -36,27 +35,26 @@ function playRound(playerSelection, computerSelection) {
   ) {
     computerScore++;
   }
-}
-
-function handleClick(playerMove) {
   if (isGameOver()) {
     if (computerScore > playerScore) {
       alert("Sorry, you lost the game!");
     } else if (computerScore < playerScore) {
       alert("You won the game!");
     }
-  } else {
-    let computerMove = getComputerChoice();
-    playRound(playerMove, computerMove);
-    let playedRound = document.createTextNode(
-      `You: ${playerMove} - Computer: ${computerMove}`
-    );
-    let scoreText = document.createTextNode(
-      `You: ${playerScore} - Computer: ${computerScore}`
-    );
-    played.innerHTML = "";
-    results.innerHTML = "";
-    played.appendChild(playedRound);
-    results.appendChild(scoreText);
   }
+}
+
+function handleClick(playerMove) {
+  let computerMove = getComputerChoice();
+  playRound(playerMove, computerMove);
+  let playedRound = document.createTextNode(
+    `You: ${playerMove} - Computer: ${computerMove}`
+  );
+  let scoreText = document.createTextNode(
+    `You: ${playerScore} - Computer: ${computerScore}`
+  );
+  played.innerHTML = "";
+  results.innerHTML = "";
+  played.appendChild(playedRound);
+  results.appendChild(scoreText);
 }
