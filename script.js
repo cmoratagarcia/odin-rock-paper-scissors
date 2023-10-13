@@ -2,6 +2,7 @@
 // Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
 let playerScore = 0;
 let computerScore = 0;
+let results = document.querySelector(".results");
 
 function getComputerChoice() {
   let options = ["rock", "paper", "scissors"];
@@ -11,21 +12,21 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return "It's a tie!";
+    alert("It's a tie!");
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     playerScore++;
-    return "You win!";
+    alert("You win!");
   } else if (
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "scissors" && playerSelection === "paper")
   ) {
     computerScore++;
-    return "Computer wins!";
+    alert("Computer wins!");
   }
 }
 
@@ -40,7 +41,7 @@ function game() {
       let playerMove = e.target.id;
       playRound(playerMove, computerMove);
       //Using console.log to verify for now. Will change to return later
-      console.log(`You:${playerScore} - Computer:${computerScore}`);
+      results.textContent = `You:${playerScore} - Computer:${computerScore}`;
     });
   });
 }
