@@ -4,6 +4,7 @@ let playerScore = 0;
 let computerScore = 0;
 const results = document.querySelector(".result-counter");
 const resultsBox = document.querySelector(".results-box");
+const played = document.querySelector(".played");
 const rockBtn = document.querySelector("#rock-btn");
 const paperBtn = document.querySelector("#paper-btn");
 const scissorsBtn = document.querySelector("#scissors-btn");
@@ -53,11 +54,15 @@ function handleClick(playerMove) {
   } else {
     let computerMove = getComputerChoice();
     playRound(playerMove, computerMove);
-    let scoreText = document.createTextNode(
-      `You:${playerScore} - Computer:${computerScore}`
+    let playedRound = document.createTextNode(
+      `You: ${playerMove} - Computer: ${computerMove}`
     );
+    let scoreText = document.createTextNode(
+      `You: ${playerScore} - Computer: ${computerScore}`
+    );
+    played.innerHTML = "";
     results.innerHTML = "";
+    played.appendChild(playedRound);
     results.appendChild(scoreText);
-    console.log(computerMove, playerMove);
   }
 }
