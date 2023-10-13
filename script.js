@@ -2,7 +2,19 @@
 // Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
 let playerScore = 0;
 let computerScore = 0;
-let results = document.querySelector(".results");
+const results = document.querySelector(".result-counter");
+const resultsBox = document.querySelector(".results-box");
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissorsBtn = document.querySelector("#scissors-btn");
+
+rockBtn.addEventListener("click", () => handleClick("rock"));
+paperBtn.addEventListener("click", () => handleClick("paper"));
+scissorsBtn.addEventListener("click", () => handleClick("scissors"));
+
+function isGameOver() {
+  return playerScore === 5 || computerScore === 5;
+}
 
 function getComputerChoice() {
   let options = ["rock", "paper", "scissors"];
@@ -11,39 +23,41 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  let tieDiv = document.createElement("div");
+  tieDiv.textContent = "";
   if (playerSelection === computerSelection) {
-    alert("It's a tie!");
+    tieDiv.textContent = "Tied!";
+    resultsBox.appendChild(tieDiv);
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     playerScore++;
-    alert("You win!");
   } else if (
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "scissors" && playerSelection === "paper")
   ) {
     computerScore++;
-    alert("Computer wins!");
   }
 }
 
-// Write a NEW function called game(). Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
-function game() {
-  let computerMove = getComputerChoice();
-  //Add an event listener to the buttons that call your playRound function with the correct playerSelection every time a button is clicked.
-  const buttons = document.querySelectorAll("button");
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", function (e) {
-      let playerMove = e.target.id;
-      playRound(playerMove, computerMove);
-      //Using console.log to verify for now. Will change to return later
-      results.textContent = `You:${playerScore} - Computer:${computerScore}`;
-    });
-  });
+function handleClick(playerMove) {
+  if (isGameOver()) {
+    if (computerScore > playerScore) {
+      alert("Sorry, you lost the game!");
+    } else if (computerScore < playerScore) {
+      alert("You won the game!");
+    }
+  } else {
+    let computerMove = getComputerChoice();
+    playRound(playerMove, computerMove);
+    let scoreText = document.createTextNode(
+      `You:${playerScore} - Computer:${computerScore}`
+    );
+    results.innerHTML = "";
+    results.appendChild(scoreText);
+    console.log(computerMove, playerMove);
+  }
 }
-
-game();
