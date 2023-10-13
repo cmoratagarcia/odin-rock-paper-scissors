@@ -41,6 +41,9 @@ function playRound(playerSelection, computerSelection) {
     } else if (computerScore < playerScore) {
       alert("You won the game!");
     }
+    let resetButton = document.createElement("button");
+    resetButton.innerText = "Play again";
+    resultsBox.appendChild(resetButton);
   }
 }
 
