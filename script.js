@@ -1,5 +1,3 @@
-// Begin with a function called getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’.
-// Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
 let playerScore = 0;
 let computerScore = 0;
 const results = document.querySelector(".result-counter");
