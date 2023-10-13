@@ -11,6 +11,7 @@ const scissorsBtn = document.querySelector("#scissors-btn");
 rockBtn.addEventListener("click", () => handleClick("rock"));
 paperBtn.addEventListener("click", () => handleClick("paper"));
 scissorsBtn.addEventListener("click", () => handleClick("scissors"));
+resetBtn.addEventListener("click", () => resetGame());
 
 function isGameOver() {
   return playerScore === 5 || computerScore === 5;
@@ -59,4 +60,12 @@ function handleClick(playerMove) {
   results.innerHTML = "";
   played.appendChild(playedRound);
   results.appendChild(scoreText);
+}
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  played.innerHTML = "";
+  results.innerHTML = "";
+  resetBtn.setAttribute("style", "display: none;");
 }
