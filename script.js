@@ -2,6 +2,7 @@ let playerScore = 0;
 let computerScore = 0;
 const results = document.querySelector(".result-counter");
 const resultsBox = document.querySelector(".results-box");
+const resetBtn = document.querySelector(".reset-btn");
 const played = document.querySelector(".played");
 const rockBtn = document.querySelector("#rock-btn");
 const paperBtn = document.querySelector("#paper-btn");
@@ -36,14 +37,12 @@ function playRound(playerSelection, computerSelection) {
     computerScore++;
   }
   if (isGameOver()) {
+    resetBtn.setAttribute("style", "display: block;");
     if (computerScore > playerScore) {
       alert("Sorry, you lost the game!");
     } else if (computerScore < playerScore) {
       alert("You won the game!");
     }
-    let resetButton = document.createElement("button");
-    resetButton.innerText = "Play again";
-    resultsBox.appendChild(resetButton);
   }
 }
 

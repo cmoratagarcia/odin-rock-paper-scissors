@@ -20,3 +20,8 @@ font-size: 20px;
 padding: 10px;
 border-radius: 5px;
 }
+
+.reset-btn {
+margin: auto;
+display: none;
+}
