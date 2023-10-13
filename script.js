@@ -18,28 +18,26 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     playerScore++;
-    return "You win!"
+    return "You win!";
   } else if (
     (computerSelection === "rock" && playerSelection === "scissors") ||
     (computerSelection === "paper" && playerSelection === "rock") ||
     (computerSelection === "scissors" && playerSelection === "paper")
   ) {
     computerScore++;
-    return "Computer wins!"
+    return "Computer wins!";
   }
 }
 
 // Write a NEW function called game(). Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
 function game() {
-  for (let i = 0; i < 5; i++) {
-    let computerMove = getComputerChoice();
-    // Use prompt() to get input from the user. Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
-    let playerMove = prompt("Enter rock, paper or scissors").toLowerCase();
+  let computerMove = getComputerChoice();
+  // Use prompt() to get input from the user. Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
+  let playerMove = prompt("Enter rock, paper or scissors").toLowerCase();
 
-    playRound(playerMove, computerMove);
-    //Using console.log to verify for now. Will change to return later
-    console.log(`You:${playerScore} - Computer:${computerScore}`);
-  }
+  playRound(playerMove, computerMove);
+  //Using console.log to verify for now. Will change to return later
+  console.log(`You:${playerScore} - Computer:${computerScore}`);
 }
 
 game();
