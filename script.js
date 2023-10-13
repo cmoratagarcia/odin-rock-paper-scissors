@@ -22,11 +22,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  let tieDiv = document.createElement("div");
-  tieDiv.textContent = "";
   if (playerSelection === computerSelection) {
-    tieDiv.textContent = "Tied!";
-    resultsBox.appendChild(tieDiv);
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||

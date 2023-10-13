@@ -3,7 +3,12 @@ body {
       margin: auto;
     text-align: center;
 }
-
+.buttons {
+    margin: 55px auto;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
 button {
 display: flex;
 flex-direction: column;
