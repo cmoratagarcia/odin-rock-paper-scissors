@@ -2,6 +2,8 @@ let playerScore = 0;
 let computerScore = 0;
 const results = document.querySelector(".result-counter");
 const resultsBox = document.querySelector(".results-box");
+const resetModal = document.querySelector(".reset-modal");
+const gameResult = document.querySelector(".game-result");
 const resetBtn = document.querySelector(".reset-btn");
 const played = document.querySelector(".played");
 const rockBtn = document.querySelector("#rock-btn");
@@ -38,12 +40,12 @@ function playRound(playerSelection, computerSelection) {
     computerScore++;
   }
   if (isGameOver()) {
-    resetBtn.setAttribute("style", "display: block;");
     if (computerScore > playerScore) {
-      alert("Sorry, you lost the game!");
+      gameResult.innerText = "Sorry, you lost the game!";
     } else if (computerScore < playerScore) {
-      alert("You won the game!");
+      gameResult.innerText = "You won the game!";
     }
+    resetModal.setAttribute("style", "display: block;");
   }
 }
 
@@ -67,5 +69,6 @@ function resetGame() {
   computerScore = 0;
   played.innerHTML = "";
   results.innerHTML = "";
+  gameResult.innerHTML = "";
   resetBtn.setAttribute("style", "display: none;");
 }
