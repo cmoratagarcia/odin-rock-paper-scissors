@@ -1,14 +1,15 @@
 let playerScore = 0;
 let computerScore = 0;
+const mainGame = document.querySelector(".main-game");
+const played = document.querySelector(".played");
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissorsBtn = document.querySelector("#scissors-btn");
 const results = document.querySelector(".result-counter");
 const resultsBox = document.querySelector(".results-box");
 const resetModal = document.querySelector(".reset-modal");
 const gameResult = document.querySelector(".game-result");
 const resetBtn = document.querySelector(".reset-btn");
-const played = document.querySelector(".played");
-const rockBtn = document.querySelector("#rock-btn");
-const paperBtn = document.querySelector("#paper-btn");
-const scissorsBtn = document.querySelector("#scissors-btn");
 
 rockBtn.addEventListener("click", () => handleClick("rock"));
 paperBtn.addEventListener("click", () => handleClick("paper"));
@@ -45,6 +46,7 @@ function playRound(playerSelection, computerSelection) {
     } else if (computerScore < playerScore) {
       gameResult.innerText = "You won the game!";
     }
+    mainGame.setAttribute("style", "display: none;");
     resetModal.setAttribute("style", "display: block;");
   }
 }
@@ -70,5 +72,6 @@ function resetGame() {
   played.innerHTML = "";
   results.innerHTML = "";
   gameResult.innerHTML = "";
-  resetBtn.setAttribute("style", "display: none;");
+  resetModal.setAttribute("style", "display: none;");
+  mainGame.setAttribute("style", "display: block;");
 }
